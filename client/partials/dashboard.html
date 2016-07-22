@@ -1,0 +1,57 @@
+<title>List Polls</title>
+
+<!--ADD A SEACH FILTER FOR THE TABLE BELOW-->
+  <p>
+    {{logged_user}}
+  </p>
+  <h1>Welcome, <span ng-bind="user.name"></span></h1>
+  <p>Dashboard  | <a href="#/create">Create New Poll</a> | <a href="#/">Logout</a></p>
+  <div>
+  	<div>
+  		<input type="text" ng-model="query" placeholder="Search...">
+  	</div>
+    <h2>Current Polls</h2>
+  	<div>
+  		<table name='polls'>
+  			<thead>
+  				<tr>
+  					<th>User Name</th>
+  					<th>Survey Question</th>
+  					<th>Date Posted</th>
+  					<th>Action</th>
+  				</tr>
+  			</thead>
+  			<tbody ng-controller='pollsController'>
+  				<tr ng-repeat="poll in polls | filter: query" >
+  					<td ng-bind="poll.created_by"></td>
+  					<td><a ng-bind="poll.name" href="#/poll/{{poll._id}}"></a>></td>
+  					<td ng-bind="poll.createdAt"></td>
+  					<td ng-bind="">DELETE IF IT'S YOUR POST</td>
+  				</tr>
+  			</tbody>
+  		</table>
+  	</div>
+  	<!-- <h2>Add a new Topic</h2>
+  	<form class="form-horizontal" role="form">
+  		<div class="form-group">
+  			<label class="col-sm-2 control-label">Topic:</label>
+  			<input type="text" class="col-sm-4" ng-model="newTopic.title">
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 control-label">Description:</label>
+  			<textarea class="col-sm-4" rows="4" ng-model="newTopic.description"></textarea>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 control-label">Category:</label>
+  			<select class="col-sm-4" ng-model="newTopic.category">
+  				<option value="HTML">HTML</option>
+  				<option value="MySQL">MySQL</option>
+  				<option value="Ruby on Rails">Ruby on Rails</option>
+  				<option value="JavaScript">JavaScript</option>
+  			</select>
+  		</div>
+  		<div class="form-group">
+  			<button class="btn btn-success col-md-1 col-md-offset-5" ng-click="createTopic(newTopic, user)">Add Topic</button>
+  		</div>
+  	</form> -->
+  </div>
